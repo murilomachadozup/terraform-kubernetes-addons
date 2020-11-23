@@ -1,8 +1,9 @@
 ---
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
   name: letsencrypt-staging
+  namespace: '${namespace}'
 spec:
   acme:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
@@ -21,13 +22,11 @@ spec:
             secretKeySecretRef:
               key: SCW_SECRET_KEY
               name: scaleway-secret
-    - http01:
-        ingress:
-          class: ${ingress_class}
 ---
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
+  namespace: '${namespace}'
   name: letsencrypt
 spec:
   acme:
@@ -47,6 +46,3 @@ spec:
             secretKeySecretRef:
               key: SCW_SECRET_KEY
               name: scaleway-secret
-    - http01:
-        ingress:
-          class: ${ingress_class}

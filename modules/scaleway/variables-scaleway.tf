@@ -9,3 +9,10 @@ variable "kapsule" {
   type        = any
   default     = {}
 }
+
+variable "scaleway_webhook_dns" {
+  description = "Scaleway webhook dns customization"
+  type        = any
+  default     = {}
+}
+
